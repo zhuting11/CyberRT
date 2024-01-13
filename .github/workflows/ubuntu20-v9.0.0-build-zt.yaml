@@ -30,3 +30,9 @@ jobs:
           lsb_release -a
           echo "-----------------------"
           bash -c "cd /workspace/${{ github.repository }} && source install/setup.bash && mkdir -p build && cd build && cmake .. && make -j$(nproc)"
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: compiled-binaries
+          path: /workspace/${{ github.repository }}/build
+
